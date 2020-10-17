@@ -51,15 +51,42 @@ class _NoteScreenState extends State<NoteScreen> {
       child: Consumer<Note>(
         builder: (context, note, _) => Scaffold(
           appBar: AppBar(
-            title: TextField(
-              controller: _titleController,
-              maxLines: 1,
-            ),
+            iconTheme: IconThemeData(color: Colors.black),
+            elevation: 0,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
-          body: TextField(
-            maxLines: null,
-            controller: _detailsController,
-            expands: true,
+          body: CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildListDelegate.fixed(
+                  [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Title",
+                        ),
+                        maxLines: 1,
+                        controller: _titleController,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Note",
+                        ),
+                        maxLines: null,
+                        controller: _detailsController,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

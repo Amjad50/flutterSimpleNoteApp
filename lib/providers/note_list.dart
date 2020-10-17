@@ -48,6 +48,5 @@ class NoteListProvider extends ChangeNotifier {
   Future<void> updateNotesFile() async {
     String notesJson = jsonEncode(notes);
     (await notesFile).writeAsString(notesJson);
-    print("writing to file $notesJson");
   }
 }
