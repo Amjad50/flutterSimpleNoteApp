@@ -55,35 +55,29 @@ class _NoteScreenState extends State<NoteScreen> {
             elevation: 0,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
-          body: CustomScrollView(
-            slivers: [
-              SliverList(
-                delegate: SliverChildListDelegate.fixed(
-                  [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Title",
-                        ),
-                        maxLines: 1,
-                        controller: _titleController,
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Note",
-                        ),
-                        maxLines: null,
-                        controller: _detailsController,
-                      ),
-                    ),
-                  ],
+          body: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Title",
+                  ),
+                  maxLines: 1,
+                  controller: _titleController,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Note",
+                  ),
+                  maxLines: null,
+                  controller: _detailsController,
                 ),
               ),
             ],

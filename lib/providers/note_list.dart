@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:note_app/providers/note.dart';
 import 'package:path_provider/path_provider.dart';
 
-class NoteListProvider extends ChangeNotifier {
+class NoteListProvider with ChangeNotifier {
   final List<Note> _notes = [];
 
   Future<File> get notesFile async {
