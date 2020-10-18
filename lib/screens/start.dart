@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:note_app/providers/note_list.dart';
 import 'package:note_app/providers/note.dart';
 import 'package:note_app/screens/note_screen.dart';
+import 'package:note_app/screens/settings.dart';
 import 'package:note_app/views/note_item.dart';
 import 'package:provider/provider.dart';
+
+const _actionsRoutes = {
+  'Settings': SettingsScreen.route,
+};
 
 class StartScreen extends StatefulWidget {
   static const String route = "/";
@@ -26,6 +31,17 @@ class _StartScreenState extends State<StartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Super Note"),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (_) => [
+              for (final item in _actionsRoutes.keys)
+                PopupMenuItem(child: Text(item), value: item),
+            ],
+            onSelected: (value) {
+              Navigator.pushNamed(context, _actionsRoutes[value]);
+            },
+          )
+        ],
       ),
       body: Consumer<NoteListProvider>(
         builder: (context, notelist, _) {

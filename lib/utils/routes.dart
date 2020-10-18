@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:note_app/screens/note_screen.dart';
+import 'package:note_app/screens/settings.dart';
 import 'package:note_app/screens/start.dart';
 
 class Routes {
@@ -19,6 +20,11 @@ class Routes {
           );
         }
         break;
+      case SettingsScreen.route:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (_) => SettingsScreen(),
+        );
       default:
         return getErrorRoute(routeSettings);
     }

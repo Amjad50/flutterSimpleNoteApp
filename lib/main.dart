@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/providers/note_list.dart';
+import 'package:note_app/providers/theme.dart';
 import 'package:note_app/utils/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -12,15 +13,19 @@ class NoteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => NoteListProvider())],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Super Note',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+      providers: [
+        ChangeNotifierProvider(create: (_) => NoteListProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ],
+      child: Consumer<ThemeProvider>(
+        builder: (context, theme, _) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Super Note',
+          darkTheme: theme.darkTheme,
+          theme: theme.lightTheme,
+          themeMode: theme.themeMode,
+          onGenerateRoute: Routes.generateRoute,
         ),
-        onGenerateRoute: Routes.generateRoute,
       ),
     );
   }
