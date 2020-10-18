@@ -51,7 +51,12 @@ class _NoteScreenState extends State<NoteScreen> {
       child: Consumer<Note>(
         builder: (context, note, _) => Scaffold(
           appBar: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(
+              // This was changed to a color that would be good on
+              // `scaffoldBackgroundColor`, as we are not using
+              // `primaryColor` for the Appbar here
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
             elevation: 0,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
