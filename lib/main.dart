@@ -22,7 +22,7 @@ class NoteApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Super Note',
           darkTheme: theme.darkTheme,
-          theme: theme.lightTheme,
+          theme: theme.darkTheme,
           themeMode: theme.themeMode,
           onGenerateRoute: Routes.generateRoute,
         ),
